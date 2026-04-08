@@ -130,7 +130,7 @@ static void hid_macropad_process(HidMacropad* hid_macropad, InputEvent* event) {
                     hid_hal_keyboard_press(hid_macropad->hid, HID_KEYBOARD_L_SHIFT);
                 } else if(event->key == InputKeyDown) {
                     model->down_pressed = true;
-                    hid_hal_keyboard_press(hid_macropad->hid, HID_KEYBOARD_DOWN_ARROW);
+                    hid_hal_keyboard_press(hid_macropad->hid, HID_KEYBOARD_F18);
                 } else if(event->key == InputKeyLeft) {
                     model->left_pressed = true;
                     hid_hal_keyboard_press(hid_macropad->hid, HID_KEYBOARD_ESCAPE);
@@ -149,7 +149,7 @@ static void hid_macropad_process(HidMacropad* hid_macropad, InputEvent* event) {
                     hid_hal_keyboard_release(hid_macropad->hid, HID_KEYBOARD_L_SHIFT);
                 } else if(event->key == InputKeyDown) {
                     model->down_pressed = false;
-                    hid_hal_keyboard_release(hid_macropad->hid, HID_KEYBOARD_DOWN_ARROW);
+                    hid_hal_keyboard_release(hid_macropad->hid, HID_KEYBOARD_F18);
                 } else if(event->key == InputKeyLeft) {
                     model->left_pressed = false;
                     hid_hal_keyboard_release(hid_macropad->hid, HID_KEYBOARD_ESCAPE);
