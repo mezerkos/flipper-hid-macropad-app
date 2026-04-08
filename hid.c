@@ -49,6 +49,7 @@ static void bt_hid_connection_status_changed_callback(BtStatus status, void* con
     hid_mouse_clicker_set_connected_status(hid->hid_mouse_clicker, connected);
     hid_mouse_jiggler_set_connected_status(hid->hid_mouse_jiggler, connected);
     hid_mouse_jiggler_stealth_set_connected_status(hid->hid_mouse_jiggler_stealth, connected);
+    hid_macropad_set_connected_status(hid->hid_macropad, connected);
     hid_ptt_set_connected_status(hid->hid_ptt, connected);
     hid_tiktok_set_connected_status(hid->hid_tiktok, connected);
 }
@@ -153,6 +154,11 @@ Hid* hid_alloc() {
         HidViewMouseJigglerStealth,
         hid_mouse_jiggler_stealth_get_view(app->hid_mouse_jiggler_stealth));
 
+    // Macropad view
+    app->hid_macropad = hid_macropad_alloc(app);
+    view_dispatcher_add_view(
+        app->view_dispatcher, HidViewMacropad, hid_macropad_get_view(app->hid_macropad));
+
     // PushToTalk view
     app->hid_ptt_menu = hid_ptt_menu_alloc(app);
     view_dispatcher_add_view(
@@ -199,6 +205,8 @@ void hid_free(Hid* app) {
     hid_mouse_jiggler_free(app->hid_mouse_jiggler);
     view_dispatcher_remove_view(app->view_dispatcher, HidViewMouseJigglerStealth);
     hid_mouse_jiggler_stealth_free(app->hid_mouse_jiggler_stealth);
+    view_dispatcher_remove_view(app->view_dispatcher, HidViewMacropad);
+    hid_macropad_free(app->hid_macropad);
     view_dispatcher_remove_view(app->view_dispatcher, HidViewPushToTalkMenu);
     hid_ptt_menu_free(app->hid_ptt_menu);
     view_dispatcher_remove_view(app->view_dispatcher, HidViewPushToTalk);

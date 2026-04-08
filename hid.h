@@ -30,6 +30,7 @@
 #include "views/hid_mouse_jiggler_stealth.h"
 #include "views/hid_tiktok.h"
 #include "views/hid_ptt.h"
+#include "views/hid_macropad.h"
 #include "views/hid_ptt_menu.h"
 
 #include "scenes/hid_scene.h"
@@ -59,6 +60,7 @@ struct Hid {
     HidMouseJiggler* hid_mouse_jiggler;
     HidMouseJigglerStealth* hid_mouse_jiggler_stealth;
     HidTikTok* hid_tiktok;
+    HidMacropad* hid_macropad;
     HidPushToTalk* hid_ptt;
     HidPushToTalkMenu* hid_ptt_menu;
 };

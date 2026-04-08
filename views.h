@@ -13,6 +13,7 @@ typedef enum {
     BtHidViewTikTok,
     HidViewPushToTalk,
     HidViewPushToTalkMenu,
+    HidViewMacropad,
     HidViewPushToTalkHelp,
     HidViewDialog,
     HidViewPopup,
