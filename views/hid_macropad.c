@@ -105,8 +105,7 @@ static void hid_macropad_draw_callback(Canvas* canvas, void* context) {
         elements_slightly_rounded_box(canvas, 5, 88, 55, 13);
         canvas_set_color(canvas, ColorWhite);
     }
-    canvas_draw_icon(canvas, 11, 90, &I_Ok_btn_9x9);
-    elements_multiline_text_aligned(canvas, 26, 98, AlignLeft, AlignBottom, "F16");
+    canvas_draw_icon(canvas, 11, 90, &I_Return_10x7);
     canvas_set_color(canvas, ColorBlack);
 
     // Back
@@ -116,7 +115,7 @@ static void hid_macropad_draw_callback(Canvas* canvas, void* context) {
         canvas_set_color(canvas, ColorWhite);
     }
     canvas_draw_icon(canvas, 11, 111, &I_Pin_back_arrow_10x8);
-    elements_multiline_text_aligned(canvas, 26, 119, AlignLeft, AlignBottom, "Back");
+    elements_multiline_text_aligned(canvas, 26, 119, AlignLeft, AlignBottom, "ESC");
 }
 
 static void hid_macropad_process(HidMacropad* hid_macropad, InputEvent* event) {
