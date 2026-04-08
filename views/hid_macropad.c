@@ -1,6 +1,6 @@
 #include "hid_macropad.h"
 #include <gui/elements.h>
-#include "../hid.h"
+#include "../macropad.h"
 
 #include "hid_icons.h"
 
@@ -8,7 +8,7 @@
 
 struct HidMacropad {
     View* view;
-    Hid* hid;
+    Macropad* hid;
 };
 
 typedef struct {
@@ -177,7 +177,7 @@ static bool hid_macropad_input_callback(InputEvent* event, void* context) {
     return consumed;
 }
 
-HidMacropad* hid_macropad_alloc(Hid* hid) {
+HidMacropad* hid_macropad_alloc(Macropad* hid) {
     HidMacropad* hid_macropad = malloc(sizeof(HidMacropad));
     hid_macropad->view = view_alloc();
     hid_macropad->hid = hid;

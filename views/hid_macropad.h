@@ -2,10 +2,10 @@
 
 #include <gui/view.h>
 
-typedef struct Hid Hid;
+typedef struct Macropad Macropad;
 typedef struct HidMacropad HidMacropad;
 
-HidMacropad* hid_macropad_alloc(Hid* hid);
+HidMacropad* hid_macropad_alloc(Macropad* app);
 
 void hid_macropad_free(HidMacropad* hid_macropad);
 
