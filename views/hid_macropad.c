@@ -78,7 +78,10 @@ static void hid_macropad_draw_callback(Canvas* canvas, void* context) {
         elements_slightly_rounded_box(canvas, x_2 + 3, y_2 + 2, 13, 13);
         canvas_set_color(canvas, ColorWhite);
     }
-    hid_macropad_draw_arrow(canvas, x_2 + 9, y_2 + 10, CanvasDirectionTopToBottom);
+    // Hamburger menu icon (3 horizontal lines)
+    canvas_draw_line(canvas, x_2 + 5, y_2 + 5, x_2 + 13, y_2 + 5);
+    canvas_draw_line(canvas, x_2 + 5, y_2 + 9, x_2 + 13, y_2 + 9);
+    canvas_draw_line(canvas, x_2 + 5, y_2 + 13, x_2 + 13, y_2 + 13);
     canvas_set_color(canvas, ColorBlack);
 
     // Left
@@ -96,8 +99,7 @@ static void hid_macropad_draw_callback(Canvas* canvas, void* context) {
         elements_slightly_rounded_box(canvas, x_3 + 3, y_2 + 2, 13, 13);
         canvas_set_color(canvas, ColorWhite);
     }
-    hid_macropad_draw_arrow(canvas, x_3 + 11, y_2 + 8, CanvasDirectionLeftToRight);
-    canvas_set_color(canvas, ColorBlack);
+    canvas_draw_icon(canvas, x_3 + 6, y_2 + 4, &I_Mic_7x11);
 
     // Ok
     canvas_draw_icon(canvas, 2, 86, &I_Space_60x18);
@@ -105,7 +107,8 @@ static void hid_macropad_draw_callback(Canvas* canvas, void* context) {
         elements_slightly_rounded_box(canvas, 5, 88, 55, 13);
         canvas_set_color(canvas, ColorWhite);
     }
-    canvas_draw_icon(canvas, 11, 90, &I_Return_10x7);
+    canvas_draw_icon(canvas, 11, 90, &I_Ok_btn_9x9);
+    canvas_draw_icon(canvas, 26, 90, &I_Return_10x7);
     canvas_set_color(canvas, ColorBlack);
 
     // Back
