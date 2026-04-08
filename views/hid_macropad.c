@@ -69,7 +69,7 @@ static void hid_macropad_draw_callback(Canvas* canvas, void* context) {
         elements_slightly_rounded_box(canvas, x_1 + 3, y_2 + 2, 13, 13);
         canvas_set_color(canvas, ColorWhite);
     }
-    canvas_draw_icon(canvas, x_1 + 4, y_2 + 5, &I_Pin_back_arrow_10x8);
+    canvas_draw_icon(canvas, x_1 + 1, y_2 + 4, &I_Esc_17x10);
     canvas_set_color(canvas, ColorBlack);
 
     // Center (Ok / Enter)
