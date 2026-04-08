@@ -21,19 +21,6 @@ typedef struct {
     bool connected;
 } HidMacropadModel;
 
-static void hid_macropad_draw_arrow(Canvas* canvas, uint8_t x, uint8_t y, CanvasDirection dir) {
-    canvas_draw_triangle(canvas, x, y, 5, 3, dir);
-    if(dir == CanvasDirectionBottomToTop) {
-        canvas_draw_line(canvas, x, y + 6, x, y - 1);
-    } else if(dir == CanvasDirectionTopToBottom) {
-        canvas_draw_line(canvas, x, y - 6, x, y + 1);
-    } else if(dir == CanvasDirectionRightToLeft) {
-        canvas_draw_line(canvas, x + 6, y, x - 1, y);
-    } else if(dir == CanvasDirectionLeftToRight) {
-        canvas_draw_line(canvas, x - 6, y, x + 1, y);
-    }
-}
-
 static void hid_macropad_draw_callback(Canvas* canvas, void* context) {
     furi_assert(context);
     HidMacropadModel* model = context;
