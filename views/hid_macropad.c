@@ -70,7 +70,10 @@ static void hid_macropad_draw_callback(Canvas* canvas, void* context) {
         elements_slightly_rounded_box(canvas, x_2 + 3, y_1 + 2, 13, 13);
         canvas_set_color(canvas, ColorWhite);
     }
-    hid_macropad_draw_arrow(canvas, x_2 + 9, y_1 + 6, CanvasDirectionBottomToTop);
+    // Hamburger menu icon (3 horizontal lines)
+    canvas_draw_line(canvas, x_2 + 5, y_1 + 5, x_2 + 13, y_1 + 5);
+    canvas_draw_line(canvas, x_2 + 5, y_1 + 9, x_2 + 13, y_1 + 9);
+    canvas_draw_line(canvas, x_2 + 5, y_1 + 13, x_2 + 13, y_1 + 13);
     canvas_set_color(canvas, ColorBlack);
 
     // Left
@@ -79,7 +82,8 @@ static void hid_macropad_draw_callback(Canvas* canvas, void* context) {
         elements_slightly_rounded_box(canvas, x_1 + 3, y_2 + 2, 13, 13);
         canvas_set_color(canvas, ColorWhite);
     }
-    hid_macropad_draw_arrow(canvas, x_1 + 7, y_2 + 8, CanvasDirectionRightToLeft);
+    canvas_set_font(canvas, FontSecondary);
+    canvas_draw_str_aligned(canvas, x_1 + 9, y_2 + 9, AlignCenter, AlignCenter, "ESC");
     canvas_set_color(canvas, ColorBlack);
 
     // Center (Ok / Enter)
@@ -88,7 +92,7 @@ static void hid_macropad_draw_callback(Canvas* canvas, void* context) {
         elements_slightly_rounded_box(canvas, x_2 + 3, y_2 + 2, 13, 13);
         canvas_set_color(canvas, ColorWhite);
     }
-    canvas_draw_icon(canvas, x_2 + 4, y_2 + 6, &I_Return_10x7);
+    canvas_draw_icon(canvas, x_2 + 6, y_2 + 4, &I_Mic_7x11);
     canvas_set_color(canvas, ColorBlack);
 
     // Right
@@ -97,7 +101,7 @@ static void hid_macropad_draw_callback(Canvas* canvas, void* context) {
         elements_slightly_rounded_box(canvas, x_3 + 3, y_2 + 2, 13, 13);
         canvas_set_color(canvas, ColorWhite);
     }
-    canvas_draw_icon(canvas, x_3 + 6, y_2 + 4, &I_Mic_7x11);
+    canvas_draw_icon(canvas, x_3 + 4, y_2 + 6, &I_Return_10x7);
     canvas_set_color(canvas, ColorBlack);
 
     // Down
@@ -106,10 +110,7 @@ static void hid_macropad_draw_callback(Canvas* canvas, void* context) {
         elements_slightly_rounded_box(canvas, x_2 + 3, y_3 + 2, 13, 13);
         canvas_set_color(canvas, ColorWhite);
     }
-    // Hamburger menu icon (3 horizontal lines)
-    canvas_draw_line(canvas, x_2 + 5, y_3 + 5, x_2 + 13, y_3 + 5);
-    canvas_draw_line(canvas, x_2 + 5, y_3 + 9, x_2 + 13, y_3 + 9);
-    canvas_draw_line(canvas, x_2 + 5, y_3 + 13, x_2 + 13, y_3 + 13);
+    canvas_draw_icon(canvas, x_2 + 6, y_3 + 5, &I_Shift_inactive_7x9);
     canvas_set_color(canvas, ColorBlack);
 
     // Back / ESC
@@ -130,38 +131,38 @@ static void hid_macropad_process(HidMacropad* hid_macropad, InputEvent* event) {
             if(event->type == InputTypePress) {
                 if(event->key == InputKeyUp) {
                     model->up_pressed = true;
-                    hid_hal_keyboard_press(hid_macropad->hid, KEY_MOD_LEFT_SHIFT);
+                    hid_hal_keyboard_press(hid_macropad->hid, HID_KEYBOARD_F18);
                 } else if(event->key == InputKeyDown) {
                     model->down_pressed = true;
-                    hid_hal_keyboard_press(hid_macropad->hid, HID_KEYBOARD_F18);
+                    hid_hal_keyboard_press(hid_macropad->hid, KEY_MOD_LEFT_SHIFT);
                 } else if(event->key == InputKeyLeft) {
                     model->left_pressed = true;
-                    hid_hal_keyboard_press(hid_macropad->hid, HID_KEYBOARD_F16);
+                    hid_hal_keyboard_press(hid_macropad->hid, HID_KEYBOARD_ESCAPE);
                 } else if(event->key == InputKeyRight) {
                     model->right_pressed = true;
-                    hid_hal_keyboard_press(hid_macropad->hid, HID_KEYBOARD_F17);
+                    hid_hal_keyboard_press(hid_macropad->hid, HID_KEYBOARD_RETURN);
                 } else if(event->key == InputKeyOk) {
                     model->ok_pressed = true;
-                    hid_hal_keyboard_press(hid_macropad->hid, HID_KEYBOARD_RETURN);
+                    hid_hal_keyboard_press(hid_macropad->hid, HID_KEYBOARD_F17);
                 } else if(event->key == InputKeyBack) {
                     model->back_pressed = true;
                 }
             } else if(event->type == InputTypeRelease) {
                 if(event->key == InputKeyUp) {
                     model->up_pressed = false;
-                    hid_hal_keyboard_release(hid_macropad->hid, KEY_MOD_LEFT_SHIFT);
+                    hid_hal_keyboard_release(hid_macropad->hid, HID_KEYBOARD_F18);
                 } else if(event->key == InputKeyDown) {
                     model->down_pressed = false;
-                    hid_hal_keyboard_release(hid_macropad->hid, HID_KEYBOARD_F18);
+                    hid_hal_keyboard_release(hid_macropad->hid, KEY_MOD_LEFT_SHIFT);
                 } else if(event->key == InputKeyLeft) {
                     model->left_pressed = false;
-                    hid_hal_keyboard_release(hid_macropad->hid, HID_KEYBOARD_F16);
+                    hid_hal_keyboard_release(hid_macropad->hid, HID_KEYBOARD_ESCAPE);
                 } else if(event->key == InputKeyRight) {
                     model->right_pressed = false;
-                    hid_hal_keyboard_release(hid_macropad->hid, HID_KEYBOARD_F17);
+                    hid_hal_keyboard_release(hid_macropad->hid, HID_KEYBOARD_RETURN);
                 } else if(event->key == InputKeyOk) {
                     model->ok_pressed = false;
-                    hid_hal_keyboard_release(hid_macropad->hid, HID_KEYBOARD_RETURN);
+                    hid_hal_keyboard_release(hid_macropad->hid, HID_KEYBOARD_F17);
                 } else if(event->key == InputKeyBack) {
                     model->back_pressed = false;
                 }
