@@ -64,12 +64,11 @@ static void hid_macropad_draw_callback(Canvas* canvas, void* context) {
     canvas_set_color(canvas, ColorBlack);
 
     // Left (Backspace)
-    canvas_draw_icon(canvas, x_1, y_2, &I_Button_18x18);
     if(model->left_pressed) {
-        elements_slightly_rounded_box(canvas, x_1 + 3, y_2 + 2, 13, 13);
+        elements_slightly_rounded_box(canvas, x_1, y_2, 19, 15);
         canvas_set_color(canvas, ColorWhite);
     }
-    canvas_draw_icon(canvas, x_1 + 5, y_2 + 4, &I_backspace_hovered_9x11);
+    canvas_draw_icon(canvas, x_1, y_2 + 2, &I_backspace_19x11);
     canvas_set_color(canvas, ColorBlack);
 
     // Center (Ok / Enter)

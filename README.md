@@ -1,57 +1,35 @@
-# HID App
+# Macropad
 
-This is a standalone version of the HID app Momentum. Thankfully, that project is GPL, so this one is as well.
+A standalone Flipper Zero HID macropad app. Boots directly into a single vertical-layout view with 6 programmable buttons.
 
-## Functionality
+Extracted from [fidian/flipper-hid-app](https://github.com/fidian/flipper-hid-app) (Momentum firmware, GPL).
 
-![screenshots/keynote.png](Keynote)
+## Button Mappings
 
-Keynote - Remote for presentations
+| Button | Key | Icon |
+|--------|-----|------|
+| Up | F18 | Hamburger menu |
+| Down | Left Shift | Shift |
+| Left | Backspace | Backspace |
+| Right | Enter | Return |
+| Center | F17 | Mic |
+| Back (short) | ESC | Back arrow + "ESC" |
+| Back (long) | Exit app | — |
 
-![screenshots/keynote-vertical.png](Keynote Vertical)
+## Build & Deploy
 
-Keynote Vertical - Alternate remote for presentations
+Requires [ufbt](https://pypi.org/project/ufbt/).
 
-![screenshots/keyboard.png](Keyboard)
+```bash
+# Build
+ufbt fap_macropad_ble    # Bluetooth variant
+ufbt fap_macropad_usb    # USB variant
 
-Keyboard - A functional keyboard, including modifier keys
+# Build + deploy + run on connected Flipper
+ufbt launch APPID=macropad_ble
+ufbt launch APPID=macropad_usb
+```
 
-![screenshots/numpad.png](Numpad)
+## License
 
-Numpad - Number pad
-
-![screenshots/media.png](Media)
-
-Media - Media controls
-
-![screenshots/apple-music-macos.png](Apple Music macOS)
-
-Apple Music macOS - Alternate music controls
-
-![screenshots/movie.png](Movie)
-
-Movie - Media controls for watching a movie
-
-![screenshots/mouse.png](Mouse)
-
-Mouse - Move the cursor and send clicks
-
-![screenshots/tiktoc-yt-shorts.png](TikToc YT Shorts)
-
-TikToc / YT Shorts - Specialized controls for short-form videos
-
-![screenshots/mouse-clicker.png](Mouse Clicker)
-
-Mouse Clicker - Repeatedly click the mouse after a delay
-
-![screenshots/mouse-jiggler.png](Mouse Jiggler)
-
-Mouse Jiggler - Moves the mouse every few seconds
-
-![screenshots/mouse-jiggler-stealth.png](Mouse Jiggler Stealth)
-
-Mouse Jiggler Stealth - Moves the mouse a random direction and distance after a random time period
-
-![PushToTalk](PushToTalk)
-
-PushToTalk - Controls to unmute your microphone with various services
+GPL — see [LICENSE](LICENSE).
