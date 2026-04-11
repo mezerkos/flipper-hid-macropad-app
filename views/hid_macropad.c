@@ -63,13 +63,13 @@ static void hid_macropad_draw_callback(Canvas* canvas, void* context) {
     canvas_draw_line(canvas, x_2 + 5, y_1 + 13, x_2 + 13, y_1 + 13);
     canvas_set_color(canvas, ColorBlack);
 
-    // Left (inverted back arrow to distinguish from hold-to-exit)
+    // Left (Backspace)
     canvas_draw_icon(canvas, x_1, y_2, &I_Button_18x18);
-    if(!model->left_pressed) {
+    if(model->left_pressed) {
         elements_slightly_rounded_box(canvas, x_1 + 3, y_2 + 2, 13, 13);
         canvas_set_color(canvas, ColorWhite);
     }
-    canvas_draw_icon(canvas, x_1 + 4, y_2 + 5, &I_Pin_back_arrow_10x8);
+    canvas_draw_icon(canvas, x_1 + 5, y_2 + 4, &I_backspace_hovered_9x11);
     canvas_set_color(canvas, ColorBlack);
 
     // Center (Ok / Enter)
@@ -123,7 +123,7 @@ static void hid_macropad_process(HidMacropad* hid_macropad, InputEvent* event) {
                     hid_hal_keyboard_press(hid_macropad->hid, KEY_MOD_LEFT_SHIFT);
                 } else if(event->key == InputKeyLeft) {
                     model->left_pressed = true;
-                    hid_hal_keyboard_press(hid_macropad->hid, HID_KEYBOARD_ESCAPE);
+                    hid_hal_keyboard_press(hid_macropad->hid, HID_KEYBOARD_DELETE);
                 } else if(event->key == InputKeyRight) {
                     model->right_pressed = true;
                     hid_hal_keyboard_press(hid_macropad->hid, HID_KEYBOARD_RETURN);
@@ -142,7 +142,7 @@ static void hid_macropad_process(HidMacropad* hid_macropad, InputEvent* event) {
                     hid_hal_keyboard_release(hid_macropad->hid, KEY_MOD_LEFT_SHIFT);
                 } else if(event->key == InputKeyLeft) {
                     model->left_pressed = false;
-                    hid_hal_keyboard_release(hid_macropad->hid, HID_KEYBOARD_ESCAPE);
+                    hid_hal_keyboard_release(hid_macropad->hid, HID_KEYBOARD_DELETE);
                 } else if(event->key == InputKeyRight) {
                     model->right_pressed = false;
                     hid_hal_keyboard_release(hid_macropad->hid, HID_KEYBOARD_RETURN);
