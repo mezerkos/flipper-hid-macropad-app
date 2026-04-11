@@ -25,6 +25,10 @@ Requires [ufbt](https://pypi.org/project/ufbt/).
 ufbt fap_macropad_ble    # Bluetooth variant
 ufbt fap_macropad_usb    # USB variant
 
+# Build + upload without launching
+ufbt fap_deploy APPID=macropad_ble
+ufbt fap_deploy APPID=macropad_usb
+
 # Build + deploy + run on connected Flipper
 ufbt launch APPID=macropad_ble
 ufbt launch APPID=macropad_usb
